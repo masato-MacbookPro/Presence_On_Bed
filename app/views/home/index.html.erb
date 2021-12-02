@@ -1,2 +1,48 @@
 <h1>Home#index</h1>
 <p>Find me in app/views/home/index.html.erb</p>
+
+<h2>音声認識サンプル</h2>
+    <button id="btn-start" data-json="<%= @words.to_json(only: [:name]) %>">start</button>
+    <button id="btn-stop">stop</button>
+    <div id="content"></div>
+
+<script>
+  word = $('#btn-start').data('json');
+  console.log(word);
+  const music = new Audio('alerm.mp3');
+  const speech = new webkitSpeechRecognition();
+  speech.lang = 'ja-JP';
+
+  const start = document.getElementById('btn-start');
+  const stop = document.getElementById('btn-stop');
+  const content = document.getElementById('content');
+
+  start.addEventListener('click' , function() {
+      speech.start();
+  });
+  
+  stop.addEventListener('click' , function() {
+      music.stop();
+  });
+
+  // speech.interimResults = true;
+
+  speech.onresult = function(e) {
+        speech.stop();
+        if(e.results[0].isFinal){
+            var autotext =  e.results[0][0].transcript
+            content.innerHTML += '<div>'+ autotext +'</div>';
+            for (let i = 0; i < word.length; i++) {
+              if (autotext.includes(word[i]["name"])){
+              music.play();
+              console.log("成功！");
+            } 
+          }
+        }
+    }
+
+    speech.onend = () => { 
+      speech.start() 
+    };
+
+</script>

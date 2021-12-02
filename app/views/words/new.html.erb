@@ -1,0 +1,12 @@
+<h1>Word#new</h1>
+<p>Find me in app/views/word/new.html.erb</p>
+
+<%= form_for [@user,@word], url: user_words_path(current_user) do |f| %>
+<div class="field">
+  <%= f.label :name, "キーワード", class: "label" %>
+    <%= f.text_field :name, autofocus: true, autocomplete: "name", :placeholder => "キーワード", class: "input" %>
+</div>
+<div class="actions">
+  <%= f.submit "追加", class: "button is-success" %>
+</div>
+<% end %>

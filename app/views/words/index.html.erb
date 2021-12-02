@@ -1,0 +1,19 @@
+<h1>Word#index</h1>
+<p>Find me in app/views/word/index.html.erb</p>
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>キーワード</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  　　<% @words.each do |word| %>
+        <tr>
+          <td><%= word.name %></td>
+        </tr>
+      <% end %>
+  </tbody>
+</table>
