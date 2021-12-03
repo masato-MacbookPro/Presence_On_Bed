@@ -1,38 +1,49 @@
 <h1>Home#index</h1>
 <p>Find me in app/views/home/index.html.erb</p>
 
+<input type="radio" name="music" value="alerm1.mp3" checked>音1
+<input type="radio" name="music" value="alerm2.mp3">音2
+<input type="radio" name="music" value="alerm3.mp3">音3
+
 <h2>音声認識サンプル</h2>
-    <button id="recode-start" data-json="<%= @words.to_json(only: [:name]) %>">録音開始</button>
-    <button id="recode-stop">録音停止</button>
-    <button class="hide" id="music-stop">音声ストップ</button>
-    <div id="content"></div>
+<button id="recode-start" data-json="<%= @words.to_json(only: [:name]) %>">録音開始</button>
+<button class="hide" id="recode-stop">録音停止</button>
+<button class="hide" id="music-stop">音声ストップ</button>
+<div id="content"></div>
 
 <script>
+  status = 0
   word = $('#recode-start').data('json');
-  const music = new Audio('alerm.mp3');
-  const speech = new webkitSpeechRecognition();
+  speech = new webkitSpeechRecognition();
   speech.lang = 'ja-JP';
 
-  const recodeStart = document.getElementById('recode-start');
-  const recodeStop = document.getElementById('recode-stop')
-  const musicStop = document.getElementById('music-stop');
-  const content = document.getElementById('content');
+  recodeStart = document.getElementById('recode-start');
+  recodeStop = document.getElementById('recode-stop')
+  musicStop = document.getElementById('music-stop');
+  content = document.getElementById('content');
 
   recodeStart.addEventListener('click' , function() {
-      speech.start();
+    speech.stop();
+    speech.start();
+    $(`#recode-start`).addClass(`hide`)
+    $(`#recode-stop`).removeClass(`hide`)
   });
 
   recodeStop.addEventListener('click' , function() {
     console.log("停止");
-      speech.abort();
+    status = 1
+    $(`#recode-start`).removeClass(`hide`)
+    $(`#recode-stop`).addClass(`hide`)
   });
   
   musicStop.addEventListener('click' , function() {
-      music.pause();
+    music.pause();
+    $(`#music-stop`).addClass(`hide`) 
   });
 
 
   // speech.interimResults = true;
+
 
   speech.onresult = function(e) {
     speech.stop();
@@ -42,17 +53,22 @@
         for (let i = 0; i < word.length; i++) {
           if (autotext.includes(word[i]["name"])){
             id = "alert"
+            select = $('input:radio[name="music"]:checked').val()
+            music = new Audio(select)
             music.play();
             $(`#music-stop`).removeClass(`hide`)
-            console.log("成功！");
           } 
         }
       $(`#content`).append(`<div id="content_${id}">${autotext}</div>`)
     }
   }
-
-    speech.onend = () => { 
+  
+  speech.onend = () => { 
+    if (status == 0){
       speech.start() 
-    };
+    } else {
+      speech.stop()
+    }
+  };
 
 </script>

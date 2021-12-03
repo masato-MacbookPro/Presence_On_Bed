@@ -17,3 +17,37 @@
  #content_alert{
    color: red;
  }
+
+ @media screen and (max-width: 600px) {
+  #footer-menu {
+    position: fixed;
+    width: 100%;
+    background-color: #1e1e1e;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    padding: 0;
+    }
+    #footer-menu ul{
+    display: flex;
+    }
+    #footer-menu li{
+    width: 25%;
+    text-align: center;
+    background-color: #1E1E1E;
+    }
+    #footer-menu li:nth-child(even){
+    background-color: #333;
+    }
+    #footer-menu li a{
+    width: 100%;
+    display: block;
+    padding: 5px 0;
+    color: #EEE;
+    }
+    #footer-menu li a:hover{
+    background-color: #666;
+    }
+ }
+
+ @media screen and (min-width: 601px) {}
