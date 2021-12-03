@@ -2,44 +2,54 @@
 <p>Find me in app/views/home/index.html.erb</p>
 
 <h2>音声認識サンプル</h2>
-    <button id="btn-start" data-json="<%= @words.to_json(only: [:name]) %>">start</button>
-    <button id="btn-stop">stop</button>
+    <button id="recode-start" data-json="<%= @words.to_json(only: [:name]) %>">録音開始</button>
+    <button id="recode-stop">録音停止</button>
+    <button class="hide" id="music-stop">音声ストップ</button>
     <div id="content"></div>
 
 <script>
-  word = $('#btn-start').data('json');
-  console.log(word);
+  word = $('#recode-start').data('json');
   const music = new Audio('alerm.mp3');
   const speech = new webkitSpeechRecognition();
   speech.lang = 'ja-JP';
 
-  const start = document.getElementById('btn-start');
-  const stop = document.getElementById('btn-stop');
+  const recodeStart = document.getElementById('recode-start');
+  const recodeStop = document.getElementById('recode-stop')
+  const musicStop = document.getElementById('music-stop');
   const content = document.getElementById('content');
 
-  start.addEventListener('click' , function() {
+  recodeStart.addEventListener('click' , function() {
       speech.start();
   });
-  
-  stop.addEventListener('click' , function() {
-      music.stop();
+
+  recodeStop.addEventListener('click' , function() {
+    console.log("停止");
+      speech.abort();
   });
+  
+  musicStop.addEventListener('click' , function() {
+      music.pause();
+  });
+
 
   // speech.interimResults = true;
 
   speech.onresult = function(e) {
-        speech.stop();
-        if(e.results[0].isFinal){
-            var autotext =  e.results[0][0].transcript
-            content.innerHTML += '<div>'+ autotext +'</div>';
-            for (let i = 0; i < word.length; i++) {
-              if (autotext.includes(word[i]["name"])){
-              music.play();
-              console.log("成功！");
-            } 
-          }
+    speech.stop();
+    id = "normal"
+    if(e.results[0].isFinal){
+        var autotext =  e.results[0][0].transcript
+        for (let i = 0; i < word.length; i++) {
+          if (autotext.includes(word[i]["name"])){
+            id = "alert"
+            music.play();
+            $(`#music-stop`).removeClass(`hide`)
+            console.log("成功！");
+          } 
         }
+      $(`#content`).append(`<div id="content_${id}">${autotext}</div>`)
     }
+  }
 
     speech.onend = () => { 
       speech.start() 

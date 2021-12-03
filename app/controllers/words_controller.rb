@@ -1,6 +1,6 @@
 class WordsController < ApplicationController
   def index
-    @words = Word.all
+    @words = Word.where(user_id: current_user.id)
   end
 
   def new
@@ -9,7 +9,7 @@ class WordsController < ApplicationController
   end
 
   def create
-    @word = Word.new(word_params)
+    @word = Word.new(name: params[:word]["name"], user_id: params[:user_id])
     @word.save
     redirect_to user_words_path(current_user)
   end
@@ -17,8 +17,8 @@ class WordsController < ApplicationController
   def edit
   end
 
-  private
-  def word_params
-    params.require(:word).permit(:name, :user_id)
-  end
+  # private
+  # def word_params
+  #   params.require(:word).permit(:name, :user_id)
+  # end
 end
