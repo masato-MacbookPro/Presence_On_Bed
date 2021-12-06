@@ -6,15 +6,15 @@
   </thead>
 
   <tbody>
-  　　<% @words.each do |word| %>
-        <tr>
-          <td>
-          <%= word.name %>
-          <%= link_to user_word_path(current_user,word), class:"no-underline", method: :delete, data: { confirm: "削除しますか?" } do %>
-            <span><i class="fas fa-trash"></i></span>
-          <% end %>
-          </td>
-        </tr>
-      <% end %>
+    <% @words.each do |word| %>
+      <tr>
+        <td>
+        <%= word.name %>
+        <%= link_to user_word_path(current_user,word), class:"no-underline", method: :delete, data: { confirm: "削除しますか?" } do %>
+          <span><i class="fas fa-trash"></i></span>
+        <% end %>
+        </td>
+      </tr>
+    <% end %>
   </tbody>
 </table>

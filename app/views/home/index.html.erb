@@ -19,8 +19,8 @@
   <br>
 
   <div class="onair">
-    <button id="recode-start" data-json="<%= @words.to_json(only: [:name]) %>">録音開始</button>
-    <button class="hide" id="recode-stop">録音停止</button>
+    <button id="recode-start" data-json="<%= @words.to_json(only: [:name]) %>">記録開始</button>
+    <button class="hide" id="recode-stop">記録停止</button>
     <button class="hide" id="music-stop"><i class="fas fa-volume-mute"></i></button>
     <div>On Air</div>
   </div>
@@ -39,6 +39,7 @@
   content = document.getElementById('content');
 
   recodeStart.addEventListener('click' , function() {
+    status = 0
     speech.stop();
     speech.start();
     $(`#recode-start`).addClass(`hide`)
@@ -52,6 +53,11 @@
     $(`#recode-start`).removeClass(`hide`)
     $(`#recode-stop`).addClass(`hide`)
     $(`.onair > div`).removeClass(`record-click`)
+    if (!confirm('記録を消去してもよろしいですか？')) {
+        return false;
+      } else {
+        $('#content').empty();
+      }
   });
   
   musicStop.addEventListener('click' , function() {

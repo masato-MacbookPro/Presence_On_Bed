@@ -3,5 +3,11 @@ class HomeController < ApplicationController
     if user_signed_in?
       @words = Word.where(user_id: current_user.id) 
     end
+    redirect_to(root_path) unless user_signed_in?
+  end
+
+  def admin
+    users = User.all
+    @total_users = users.count
   end
 end

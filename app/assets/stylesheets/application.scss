@@ -9,15 +9,9 @@
  $ruler: 16px;
  $color-red: #AE1100;
  $color-bg: #EBECF0;
- $color-shadow: #BABECC;
+ $color-shadow: #9dbed1;
  $color-white: #FFF;
 
- main {
-  padding-top: 30px;
-  margin-left: auto;
-  margin-right: auto;
-  width: 70%;
-  }
 
 .hide{
   display: none;
@@ -66,6 +60,13 @@
 
    span {
      color: black;
+   }
+ }
+
+ .is-danger {
+   p {
+     color: red;
+     text-align: center;
    }
  }
 
@@ -138,11 +139,16 @@
 
   //スマホ用
  @media screen and (max-width: 600px) {
+  main {
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    }
   body, html {
     background-color:$color-bg;
   }
   
-  body, p, input, select, textarea, button {
+  body, p, input, select, textarea, button, .lp-button {
       font-family: 'Montserrat', sans-serif;
       letter-spacing: -0.2px;
       font-size: $ruler;
@@ -163,8 +169,6 @@
   
   form {
     padding: $ruler;
-    // width: $ruler*20;
-    // margin: 0 auto;
   }
   
   .segment {
@@ -265,7 +269,7 @@
 
   .footer-list {
     width: 100%;
-    height: 85px;
+    height: 12vh;
     background-color: #EBECF0;
     display: flex;
     justify-content: space-evenly;
@@ -319,18 +323,189 @@
     margin-left: auto;
     margin-right: auto;
   }
+
+  //ハンバーガーメニュー
+  .menu-btn {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    height: 60px;
+    width: 60px;
+    justify-content: center;
+    align-items: center;
+    z-index: 90;
+    background-color: $color-bg;
+    border-radius: $ruler*2;
+}
+.menu-btn-check {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  height: 60px;
+  width: 60px;
+  justify-content: center;
+  align-items: center;
+  z-index: 90;
+  background-color: #000000;
+}
+.menu-btn span,
+.menu-btn span:before,
+.menu-btn span:after {
+    content: '';
+    display: block;
+    height: 3px;
+    width: 25px;
+    border-radius: 3px;
+    background-color: #000000;
+    position: absolute;
+}
+.menu-btn span:before {
+    bottom: 8px;
+}
+.menu-btn span:after {
+    top: 8px;
+}
+
+#menu-btn-check:checked ~ .menu-btn span {
+  background-color: rgba(255, 255, 255, 0);/*メニューオープン時は真ん中の線を透明にする*/
+}
+#menu-btn-check:checked ~ .menu-btn span::before {
+  bottom: 0;
+  transform: rotate(45deg);
+}
+#menu-btn-check:checked ~ .menu-btn span::after {
+  top: 0;
+  transform: rotate(-45deg);
+}
+
+#menu-btn-check:checked ~ .menu-content ul{ 
+  left: 0;/*メニューを画面内へ*/
+} 
+
+#menu-btn-check:checked ~ .navbar-color {
+  color:red;
+}
+
+.menu-content ul {
+  padding: 70px 10px 0;
+}
+.menu-content ul li {
+  border-bottom: solid 1px #ffffff;
+  list-style: none;
+}
+.menu-content ul li a {
+  display: block;
+  width: 100%;
+  font-size: 30px;
+  box-sizing: border-box;
+  color:#ffffff;
+  text-decoration: none;
+  padding: 9px 15px 10px 0;
+  position: relative;
+}
+
+.menu-content {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0%;/*leftの値を変更してメニューを画面外へ*/
+  z-index: 80;
+  background-color: #000000;
+  transition: all 0.5s;/*アニメーション設定*/
+  display: none;
+  opacity: 0;
+}
+#menu-btn-check:checked ~ .menu-content {
+    left: 0%;/*メニューを画面内へ*/
+}
+.ham-menu {
+  display: block;
+}
+.catch-copy {
+  margin-top: 50px;
+  font-size: 10vw;
+  text-align: center
+}
+
+.detail {
+  text-align: center;
+  font-size: 3vw;
+  margin-top: 50px;
+}
+
+.detail span {
+  font-size: 5vw;
+}
+
+.info {
+  position: fixed;
+  text-align: center;
+  font-size: 5vw;
+  bottom: 35px;
+}
+.lp-button {
+  height: 100px;
+  width: 150px;
+  border: 0;
+  outline: 0;
+  padding-left: 60px;
+  padding-right: 60px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 28px;
+  border-radius: $ruler*20;
+  background-color:$color-bg;
+  text-shadow: 1px 1px 0 $color-white;
+  color:#61677C;
+  font-weight: bold;
+  box-shadow: -5px -5px 20px $color-white,  5px 5px 20px $color-shadow;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  font-weight: 600;
+
+&:hover {
+  color: cadetblue;
+  text-decoration: none;
+  box-shadow: -2px -2px 5px $color-white, 2px 2px 5px $color-shadow;
+}
+}
+.link {
+  margin: 0 auto;
+  margin-top: 75px;
+  text-align: center;
+  margin-bottom: 12vh;
+}
+.business-person {
+  text-align: center;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+.lp-top {
+  display: none;
+}
  }
+ 
 
  //PC用
  @media screen and (min-width: 601px) {
+  main {
+    padding-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    }
   body, html {
     background-color:$color-bg;
   }
   
   body, p, input, select, textarea, button {
-      font-family: 'Montserrat', sans-serif;
-      letter-spacing: -0.2px;
-      font-size: $ruler;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: -0.2px;
+    font-size: $ruler;
   }
   
   div, p {
@@ -432,7 +607,7 @@
   
   .header-menu {
     &:hover {
-      color: rgb(154, 156, 165);
+      color: cadetblue;
     }
   }
 
@@ -455,4 +630,76 @@
   .link-hover{
     display: none;
   }
+  .menu-content ul {
+    display: none;
+  }
+  .catch-copy {
+    margin-top: 50px;
+    font-size: 100px;
+    text-align: center
+  }
+  
+  .detail {
+    text-align: center;
+    font-size: 30px;
+    margin-top: 50px;
+  }
+  
+  .detail span {
+    font-size: 50px;
+  }
+  
+  .link {
+    margin: 0 auto;
+    margin-top: 100px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .lp-button {
+    height: 100px;
+    width: 150px;
+    border: 0;
+    outline: 0;
+    padding-left: 60px;
+    padding-right: 60px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 60px;
+    border-radius: $ruler*20;
+    background-color:$color-bg;
+    text-shadow: 1px 1px 0 $color-white;
+    color:#61677C;
+    font-weight: bold;
+    box-shadow: -5px -5px 20px $color-white,  5px 5px 20px $color-shadow;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    font-weight: 600;
+  
+  &:hover {
+    color: cadetblue;
+    text-decoration: none;
+    box-shadow: -2px -2px 5px $color-white, 2px 2px 5px $color-shadow;
+  }
+} 
+  .info {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 20px;
+    text-align: center;
+    font-size: 20px;
+    bottom: 35px;
+  }
+  .business-person {
+    display: none;
+  }
+  .business-person-pc {
+    text-align: center;
+    // margin-top: 100px;
+  }
+  .lp-top {
+    display: flex;
+    justify-content: space-between;
+  }
  }
+
+ 
