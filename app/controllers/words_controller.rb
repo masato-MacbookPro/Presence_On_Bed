@@ -17,6 +17,12 @@ class WordsController < ApplicationController
   def edit
   end
 
+  def destroy
+    word = Word.find(params[:id])
+    word.destroy
+    redirect_to user_words_path(current_user)
+  end
+
   # private
   # def word_params
   #   params.require(:word).permit(:name, :user_id)

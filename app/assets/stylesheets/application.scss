@@ -6,48 +6,453 @@
  @import "font-awesome-sprockets";
  @import "font-awesome";
 
+ $ruler: 16px;
+ $color-red: #AE1100;
+ $color-bg: #EBECF0;
+ $color-shadow: #BABECC;
+ $color-white: #FFF;
+
+ main {
+  padding-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+  }
+
 .hide{
   display: none;
 }
 
-.shoe{
-  display: block;
+.record-color {
+  color: red;
+}
+
+#content {
+  padding-top: 20px;
 }
 
  #content_alert{
    color: red;
+   font-size: 1.5rem;
  }
 
- @media screen and (max-width: 600px) {
-  #footer-menu {
-    position: fixed;
-    width: 100%;
-    background-color: #1e1e1e;
-    bottom: 0;
-    left: 0;
-    z-index: 100;
-    padding: 0;
-    }
-    #footer-menu ul{
-    display: flex;
-    }
-    #footer-menu li{
-    width: 25%;
+ #content_normal{
+   color: black;
+ }
+
+ #music-stop {
+   color: red;
+ }
+ 
+ .music {
+   display: flex;
+   justify-content: space-between;
+ }
+
+ .record-click {
+   color: red;
+ }
+
+ .onair {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.5rem;
+  font-weight: 800;
+ }
+
+ .navbar-color {
+   color: #EBECF0;
+
+   span {
+     color: black;
+   }
+ }
+
+.music {
+  input[type=radio]{
+    display: none
+  }
+  input[type="radio"]:checked + label {
+    line-height: 60px;
     text-align: center;
-    background-color: #1E1E1E;
+    font-size: $ruler;
+    border-radius: $ruler;
+    background-color:$color-bg;
+    color:#61677C;
+    box-shadow: -5px -5px 20px $color-white,  5px 5px 20px $color-shadow;
+    transition: all 0.2s ease-in-out;
+    cursor: default;
     }
-    #footer-menu li:nth-child(even){
-    background-color: #333;
+  label {
+    cursor: pointer;
+    line-height: 60px;
+    border-radius: $ruler;
+    text-align: center;
+    margin-right: $ruler/2;
+    box-shadow:  inset 2px 2px 5px $color-shadow, inset -5px -5px 10px $color-white;
+    width: 60px;
+    height: 60px;
+    box-sizing: border-box;
+    transition: all 0.2s ease-in-out;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+}
+
+
+
+  .actions {
+    input {
+      color:#61677C;
+      font-weight: bold;
+      box-shadow: -5px -5px 20px $color-white,  5px 5px 20px $color-shadow;
+      transition: all 0.2s ease-in-out;
+      cursor: pointer;
+      font-weight: 600;
+      border: 0;
+      outline: 0;
+      font-size: $ruler;
+      border-radius: $ruler*3;
+      padding: $ruler;
+      background-color:$color-bg;
+      text-shadow: 1px 1px 0 $color-white;
+      &:active {
+        box-shadow: inset 1px 1px 2px $color-shadow, inset -1px -1px 2px $color-white;
+      } 
     }
-    #footer-menu li a{
-    width: 100%;
+  }
+
+  .navbar-menu {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+  }
+
+  .navbar-sub-menu {
+    float: right;
+  }
+
+  //スマホ用
+ @media screen and (max-width: 600px) {
+  body, html {
+    background-color:$color-bg;
+  }
+  
+  body, p, input, select, textarea, button {
+      font-family: 'Montserrat', sans-serif;
+      letter-spacing: -0.2px;
+      font-size: $ruler;
+  }
+
+  body {
+    padding-bottom: 85px;
+  }
+  
+  div, p {
+    color: $color-shadow;
+    text-shadow: 1px 1px 1px $color-white;
+  }
+
+  nav {
+    box-shadow: 0px 5px 5px -5px #b3b6c2;
+  }
+  
+  form {
+    padding: $ruler;
+    // width: $ruler*20;
+    // margin: 0 auto;
+  }
+  
+  .segment {
+    padding: $ruler 0;
+    text-align: center;
+  }
+  
+  button, input {
+    border: 0;
+    outline: 0;
+    font-size: $ruler;
+    border-radius: $ruler;
+    padding: $ruler;
+    background-color:$color-bg;
+    text-shadow: 1px 1px 0 $color-white;
+  }
+  
+  label {
     display: block;
-    padding: 5px 0;
-    color: #EEE;
+    margin-bottom: $ruler*1.5;
+    width: 100%;
+  }
+  
+  input {
+    text-align: center;
+    margin-right: $ruler/2;
+    box-shadow:  inset 2px 2px 5px $color-shadow, inset -5px -5px 10px $color-white;
+    width: 100%;
+    box-sizing: border-box;
+    transition: all 0.2s ease-in-out;
+    appearance: none;
+    -webkit-appearance: none;
+  
+    &:focus {
+      box-shadow:  inset 1px 1px 2px $color-shadow, inset -1px -1px 2px $color-white;
     }
-    #footer-menu li a:hover{
-    background-color: #666;
+  }
+  
+  button {
+    color:#61677C;
+    font-weight: bold;
+    box-shadow: -5px -5px 20px $color-white,  5px 5px 20px $color-shadow;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    font-weight: 600;
+    
+    &:hover {
+      box-shadow: -2px -2px 5px $color-white, 2px 2px 5px $color-shadow;
     }
+    
+    &:active {
+      box-shadow: inset 1px 1px 2px $color-shadow, inset -1px -1px 2px $color-white;
+    }
+    
+    .icon {
+      margin-right: $ruler/2;
+    }
+    
+    &.unit {
+      border-radius: $ruler/2;
+      line-height: 0;
+      width: $ruler*3;
+      height: $ruler*3;
+      display:inline-flex;
+      justify-content: center;
+      align-items:center;
+      margin: 0 $ruler/2;
+      font-size: $ruler*1.2;
+      
+      .icon {
+        margin-right: 0; 
+      }
+    }
+    
+    &.red {
+      display: block;
+      width: 100%;
+      color:$color-red;
+    }
+  }
+  
+  .input-group {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    
+    label {
+      margin: 0;
+      flex: 1;
+    }
+  }
+
+  footer{
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+  }
+
+  .footer-list {
+    width: 100%;
+    height: 85px;
+    background-color: #EBECF0;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 5px;
+  }
+
+  .footer-list {
+    a {
+      color: #61677C;
+    }
+    input[type=radio]{
+      display: none
+    }
+    input[type="radio"]:checked + label {
+      line-height: 60px;
+      text-align: center;
+      font-size: $ruler;
+      border-radius: $ruler;
+      background-color:$color-bg;
+      color:#61677C;
+      box-shadow: -5px -5px 20px $color-white,  5px 5px 20px $color-shadow;
+      transition: all 0.2s ease-in-out;
+      cursor: default;
+      }
+    label {
+      cursor: pointer;
+      line-height: 60px;
+      border-radius: $ruler;
+      text-align: center;
+      margin-right: $ruler/2;
+      box-shadow:  inset 2px 2px 5px $color-shadow, inset -5px -5px 10px $color-white;
+      width: 60px;
+      height: 60px;
+      box-sizing: border-box;
+      transition: all 0.2s ease-in-out;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+  }
+
+  .header-menu{
+    display: none;
+  }
+
+  .music input {
+    &:focus {
+      box-shadow:  inset 1px 1px 2px $color-shadow, inset -1px -1px 2px rgb(255, 255, 255);
+    }
+  }
+  .new-word {
+    margin-left: auto;
+    margin-right: auto;
+  }
  }
 
- @media screen and (min-width: 601px) {}
+ //PC用
+ @media screen and (min-width: 601px) {
+  body, html {
+    background-color:$color-bg;
+  }
+  
+  body, p, input, select, textarea, button {
+      font-family: 'Montserrat', sans-serif;
+      letter-spacing: -0.2px;
+      font-size: $ruler;
+  }
+  
+  div, p {
+    color: $color-shadow;
+    text-shadow: 1px 1px 1px $color-white;
+  }
+
+  nav {
+    box-shadow: 0px 5px 5px -5px #b3b6c2;
+  }
+  
+  
+  form {
+    padding: $ruler;
+    width: $ruler*20;
+    margin: 0 auto;
+  }
+  
+  .segment {
+    padding: $ruler*2 0;
+    text-align: center;
+  }
+  
+  button, input, .header-menu {
+    text-decoration:none; 
+    border: 0;
+    outline: 0;
+    font-size: $ruler;
+    border-radius: $ruler*20;
+    padding: $ruler;
+    background-color:$color-bg;
+    text-shadow: 1px 1px 0 $color-white;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: $ruler*1.5;
+    width: 100%;
+  }
+  
+  input {
+    margin-right: $ruler/2;
+    box-shadow:  inset 2px 2px 5px $color-shadow, inset -5px -5px 10px $color-white;
+    width: 100%;
+    box-sizing: border-box;
+    transition: all 0.2s ease-in-out;
+    appearance: none;
+    -webkit-appearance: none;
+  
+    &:focus {
+      box-shadow:  inset 1px 1px 2px $color-shadow, inset -1px -1px 2px $color-white;
+    }
+  }
+  
+  button, .header-menu {
+    text-decoration:none; 
+    color:#61677C;
+    font-weight: bold;
+    box-shadow: -5px -5px 20px $color-white,  5px 5px 20px $color-shadow;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    font-weight: 600;
+    
+    &:hover {
+      text-decoration:none; 
+      box-shadow: -2px -2px 5px $color-white, 2px 2px 5px $color-shadow;
+    }
+    
+    &:active {
+      box-shadow: inset 1px 1px 2px $color-shadow, inset -1px -1px 2px $color-white;
+    }
+    
+    .icon {
+      margin-right: $ruler/2;
+    }
+    
+    &.unit {
+      border-radius: $ruler/2;
+      line-height: 0;
+      width: $ruler*3;
+      height: $ruler*3;
+      display:inline-flex;
+      justify-content: center;
+      align-items:center;
+      margin: 0 $ruler/2;
+      font-size: $ruler*1.2;
+      
+      .icon {
+        margin-right: 0; 
+      }
+    }
+    
+    &.red {
+      display: block;
+      width: 100%;
+      color:$color-red;
+    }
+  }
+  
+  .header-menu {
+    &:hover {
+      color: rgb(154, 156, 165);
+    }
+  }
+
+  .logout {
+    &:hover {
+      color: red;
+    }
+  }
+  
+  .input-group {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    
+    label {
+      margin: 0;
+      flex: 1;
+    }
+  }
+  .link-hover{
+    display: none;
+  }
+ }
