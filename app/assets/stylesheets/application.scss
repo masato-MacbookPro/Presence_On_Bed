@@ -424,20 +424,28 @@
 .ham-menu {
   display: block;
 }
+
+.catch-copy div {
+  color: #dc3545;
+}
+
 .catch-copy {
   margin-top: 50px;
   font-size: 10vw;
-  text-align: center
+  text-align: center;
+  color: black;
 }
 
 .detail {
   text-align: center;
   font-size: 3vw;
   margin-top: 50px;
+  color: black;
 }
 
 .detail span {
   font-size: 5vw;
+  color: lightseagreen;
 }
 
 .info {
@@ -487,7 +495,39 @@
 .lp-top {
   display: none;
 }
- }
+.how-to-use {
+  margin-top: 50px;
+  width: 100%;
+}
+
+.use-title {
+  color: cadetblue;
+  font-size: 50px;
+  text-align: center;
+}
+
+.under-line {
+  background-color: gray;
+  width: 50%;
+  height: 2px;
+  margin: 0 auto;
+}
+
+.explain {
+  margin-top: 30px;
+  color:brown;
+}
+
+.explain-image {
+  text-align: center;
+  margin-top: 50px;
+  border: 2px solid brown;
+  margin-bottom: 30px;
+}
+.how-to-use-pc {
+  display: none;
+}
+}
  
 
  //PC用
@@ -638,15 +678,21 @@
     font-size: 100px;
     text-align: center
   }
+
+  .catch-copy div {
+    color: #dc3545;
+  }
   
   .detail {
     text-align: center;
     font-size: 30px;
     margin-top: 50px;
+    color: black;
   }
   
   .detail span {
     font-size: 50px;
+    color: lightseagreen;
   }
   
   .link {
@@ -694,12 +740,51 @@
   }
   .business-person-pc {
     text-align: center;
-    // margin-top: 100px;
   }
   .lp-top {
     display: flex;
     justify-content: space-between;
   }
+  .admin {
+    font-size: 150px;
+    text-align: center;
+  }
+  .how-to-use-pc {
+    margin-top: 50px;
+    width: 100%;
+  }
+
+  .use-title-pc {
+    font-size: 50px;
+    text-align: center;
+    color: cadetblue;
+  }
+  .how-to-use-pc div {
+    color: brown;
+  }
+
+  .under-line-pc {
+    background-color: gray;
+    width: 50%;
+    height: 2px;
+    margin: 0 auto;
+  }
+
+  .explain-pc {
+    margin-top: 30px;
+    font-size: 27px;
+  }
+
+  .explain-image-pc {
+    text-align: center;
+    margin-top: 50px;
+    border: 2px solid brown;
+    margin-bottom: 30px;
+  }
+  .how-to-use {
+    display: none;
+  }
  }
+
 
  

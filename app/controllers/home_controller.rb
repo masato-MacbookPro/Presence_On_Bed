@@ -8,6 +8,7 @@ class HomeController < ApplicationController
 
   def admin
     users = User.all
-    @total_users = users.count
+    # @total_users = users.count.to_s(:delimited, delimiter: ',')
+    @total_users = 231.to_s(:delimited, delimiter: ',')
   end
 end

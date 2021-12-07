@@ -9,7 +9,7 @@
   <path fill-rule="evenodd" d="M9 3v10H8V3h1z"/>
   <path d="M8 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 13 2.22V4L8 5V2.82z"/>
 </svg></label>
-    <input type="radio" name="music" value="alerm3.mp3" id="music_3"><label for="music_3"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-music-note" viewBox="0 0 16 16">
+    <input type="radio" name="music" value="recode4.m4a" id="music_3"><label for="music_3"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-music-note" viewBox="0 0 16 16">
   <path d="M9 13c0 1.105-1.12 2-2.5 2S4 14.105 4 13s1.12-2 2.5-2 2.5.895 2.5 2z"/>
   <path fill-rule="evenodd" d="M9 3v10H8V3h1z"/>
   <path d="M8 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 13 2.22V4L8 5V2.82z"/>
@@ -22,7 +22,7 @@
     <button id="recode-start" data-json="<%= @words.to_json(only: [:name]) %>">記録開始</button>
     <button class="hide" id="recode-stop">記録停止</button>
     <button class="hide" id="music-stop"><i class="fas fa-volume-mute"></i></button>
-    <div>On Air</div>
+    <div>記録中</div>
   </div>
 
   <div id="content"></div>
@@ -65,6 +65,12 @@
     music.curretTime = 0
     $(`#music-stop`).addClass(`hide`) 
   });
+
+  var $empty = $('#content');
+    if($empty.is(':empty')){
+      $(`#content`).append(`<div>ここに音声が出力されます</div>`)
+      console.log("ooooo");
+    }
 
   speech.onresult = function(e) {
     speech.stop();

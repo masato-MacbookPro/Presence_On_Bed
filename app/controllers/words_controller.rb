@@ -13,8 +13,7 @@ class WordsController < ApplicationController
   end
 
   def create
-    # @word = Word.new(name: params[:word]["name"], user_id: params[:user_id])
-    if Word.where(`user_id = ? and name = ?`, params[:user_id], params[:word]["name"])
+    if Word.where(`user_id = ? and name = ?`, params[:user_id], params[:word]["name"] == true) 
       redirect_to new_user_word_path(current_user), alert: 'すでに登録済みです'
     else
       @word.save
@@ -30,9 +29,4 @@ class WordsController < ApplicationController
     word.destroy
     redirect_to user_words_path(current_user)
   end
-
-  # private
-  # def word_params
-  #   params.require(:word).permit(:name, :user_id)
-  # end
 end
