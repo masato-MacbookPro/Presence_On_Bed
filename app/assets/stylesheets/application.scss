@@ -37,11 +37,6 @@
  #music-stop {
    color: red;
  }
- 
- .music {
-   display: flex;
-   justify-content: space-between;
- }
 
  .record-click {
    color: red;
@@ -69,10 +64,9 @@
      text-align: center;
    }
  }
-
-.music {
+ .music {
   input[type=radio]{
-    display: none
+    display: none;
   }
   input[type="radio"]:checked + label {
     line-height: 60px;
@@ -86,6 +80,7 @@
     cursor: default;
     }
   label {
+    line-height: 120px;
     cursor: pointer;
     line-height: 60px;
     border-radius: $ruler;
@@ -100,8 +95,10 @@
     -webkit-appearance: none;
   }
 }
-
-
+.music {
+  display: flex;
+  justify-content: space-between;
+}
 
   .actions {
     input {
@@ -135,6 +132,19 @@
 
   .navbar-sub-menu {
     float: right;
+  }
+  input::placeholder {
+    color: rgb(186, 186, 186);
+  }
+  
+  /* IE */
+  input:-ms-input-placeholder {
+    color: rgb(186, 186, 186);
+  }
+  
+  /* Edge */
+  input::-ms-input-placeholder {
+    color: rgb(186, 186, 186);
   }
 
   //スマホ用
@@ -201,6 +211,7 @@
     transition: all 0.2s ease-in-out;
     appearance: none;
     -webkit-appearance: none;
+    border-radius: 50px;
   
     &:focus {
       box-shadow:  inset 1px 1px 2px $color-shadow, inset -1px -1px 2px $color-white;
@@ -501,7 +512,7 @@
 }
 
 .use-title {
-  color: cadetblue;
+  color: brown;
   font-size: 50px;
   text-align: center;
 }
@@ -527,7 +538,12 @@
 .how-to-use-pc {
   display: none;
 }
+.site {
+  text-align: center;
+  color: lightseagreen;
+  font-size: 1vw;
 }
+ }
  
 
  //PC用
@@ -681,6 +697,7 @@
 
   .catch-copy div {
     color: #dc3545;
+    font-weight: 900;
   }
   
   .detail {
@@ -757,10 +774,7 @@
   .use-title-pc {
     font-size: 50px;
     text-align: center;
-    color: cadetblue;
-  }
-  .how-to-use-pc div {
-    color: brown;
+    color: black;
   }
 
   .under-line-pc {
@@ -773,6 +787,7 @@
   .explain-pc {
     margin-top: 30px;
     font-size: 27px;
+    color: lightseagreen;
   }
 
   .explain-image-pc {
@@ -783,6 +798,15 @@
   }
   .how-to-use {
     display: none;
+  }
+  .site {
+    text-align: center;
+    color: lightseagreen;
+    // justify-content: center;
+  }
+  .music-pc {
+    display: flex;
+    justify-content: space-between;
   }
  }
 
