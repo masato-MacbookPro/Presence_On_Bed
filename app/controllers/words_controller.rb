@@ -13,9 +13,10 @@ class WordsController < ApplicationController
   end
 
   def create
-    if Word.where(`user_id = ? and name = ?`, params[:user_id], params[:word]["name"] == true) 
+    if Word.where('user_id = ? and name = ?', params[:user_id], params[:word]["name"]).exists? == true
       redirect_to new_user_word_path(current_user), alert: 'すでに登録済みです'
     else
+      @word = Word.new(user_id: params[:user_id], name: params[:word]["name"])
       @word.save
       redirect_to user_words_path(current_user)
     end
