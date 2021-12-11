@@ -57,7 +57,7 @@
    color: #EBECF0;
 
    span {
-     color: black;
+     color: #495057;
    }
  }
 
@@ -459,7 +459,7 @@
 
 .detail span {
   font-size: 5vw;
-  color: lightseagreen;
+  color: #7890F0
 }
 
 .info {
@@ -489,7 +489,7 @@
   font-weight: 600;
 
 &:hover {
-  color: cadetblue;
+  color: #7890F0;
   text-decoration: none;
   box-shadow: -2px -2px 5px $color-white, 2px 2px 5px $color-shadow;
 }
@@ -552,7 +552,7 @@
  //PC用
  @media screen and (min-width: 601px) {
   main {
-    padding-top: 30px;
+    // padding-top: 30px;
     margin-left: auto;
     margin-right: auto;
     width: 70%;
@@ -666,7 +666,7 @@
   
   .header-menu {
     &:hover {
-      color: cadetblue;
+      color: #7890F0;
     }
   }
 
@@ -693,26 +693,26 @@
     display: none;
   }
   .catch-copy {
-    margin-top: 50px;
-    font-size: 100px;
+    // margin-top: 50px;
+    font-size: 80px;
     text-align: center
   }
 
   .catch-copy div {
-    color: #dc3545;
+    color: #F0AD90;
     font-weight: 900;
   }
   
   .detail {
     text-align: center;
-    font-size: 30px;
+    font-size: 20px;
     margin-top: 50px;
     color: black;
   }
   
   .detail span {
-    font-size: 50px;
-    color: lightseagreen;
+    font-size: 30px;
+    color: #7890F0
   }
   
   .link {
@@ -742,7 +742,7 @@
     font-weight: 600;
   
   &:hover {
-    color: cadetblue;
+    color: #7890F0;
     text-decoration: none;
     box-shadow: -2px -2px 5px $color-white, 2px 2px 5px $color-shadow;
   }
@@ -777,7 +777,7 @@
   .use-title-pc {
     font-size: 50px;
     text-align: center;
-    color: black;
+    color: #495057;
   }
 
   .under-line-pc {
@@ -790,7 +790,7 @@
   .explain-pc {
     margin-top: 30px;
     font-size: 27px;
-    color: lightseagreen;
+    color: #7890F0
   }
 
   .explain-image-pc {
@@ -804,13 +804,17 @@
   }
   .site {
     text-align: center;
-    color: lightseagreen;
+    color: #7890F0
     // justify-content: center;
   }
   .music-pc {
     display: flex;
     justify-content: space-between;
   }
+ }
+ .info a {
+   color: lightseagreen;
+   text-decoration: none;
  }
 
 
