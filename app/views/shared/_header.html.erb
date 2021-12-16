@@ -8,7 +8,7 @@
     <%= link_to "記録", home_index_path, class:"header-menu" %> 
     <%= link_to "キーワード登録", new_user_word_path(current_user), class:"header-menu" %>
     <%= link_to "キーワード一覧", user_words_path(current_user), class:"no-underline header-menu" %>
-  　<%= link_to "ログアウト", destroy_user_session_path, class:"no-underline header-menu logout", method: :delete %> 
+    <%= link_to "ログアウト", destroy_user_session_path, class:"no-underline header-menu logout", method: :delete %> 
   <% else %>
     <%= link_to "登録する", new_user_registration_path, class:"no-underline header-menu" %>
     <%= link_to "ログイン", new_user_session_path, class:"no-underline header-menu" %>
